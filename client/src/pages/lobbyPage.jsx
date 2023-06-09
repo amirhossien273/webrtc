@@ -1,6 +1,6 @@
 import LobbyComponent from "../components/lobby/LobbyComponent";
 
-const LobbyPages = (props) => {
+const LobbyPage = () => {
  
     return (
         <>
@@ -9,4 +9,4 @@ const LobbyPages = (props) => {
     );
 };
 
-export default LobbyPages;
+export default LobbyPage;

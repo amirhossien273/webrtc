@@ -1,6 +1,6 @@
-import { createContext, useCallback, useEffect, useState } from "react";
+import { createContext, useCallback, useEffect, useState, useContext } from "react";
 import { useParams } from "react-router-dom";
-import {io} from "socket.io-client";
+import { SocketContext } from "./SocketContext";
 
 export const ChatContext = createContext();
 
@@ -8,27 +8,16 @@ export const ChatContextPorovider = ({children, user}) => {
 
     const [newMessage, setNewMessage] = useState(null);
     const [messages, setMessages] = useState(null);
-    const [socket, setSocket] = useState(null);
+    const {socket} = useContext(SocketContext);
     const params = useParams();
 
-    useEffect(() => {  
-        const newSocket = io("http://127.0.0.1:4000");
-        setSocket(newSocket);
-
-        return () => {
-            newSocket.disconnect();
-        }
-     },[user]);
  
      useEffect(() => {  
 
         if(socket === null) return;
-
-        socket.emit("addNewUser", {userId: user?.id, roomID: params.roomID});
-
-        socket.on("getUserOnline", (res) => {
             
-        });
+        socket.emit("addNewUser", {userId: user?.id, roomID: params.roomID});
+     // socket.on("getUserOnline", (res) => {});
         
      },[socket]);
 

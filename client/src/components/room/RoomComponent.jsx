@@ -11,7 +11,6 @@ function RoomComponent() {
     const handleClose = () => setShow(false);
     const handleShow = () => setShow(true);
 
-    console.log(11111111111111111);
 
     return (
         <div className="header">

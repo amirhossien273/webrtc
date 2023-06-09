@@ -5,6 +5,8 @@ import { AuthContext } from "../../context/AuthContext";
 function LobbyComponent() {
 
     const {user} = useContext(AuthContext);
+
+    console.log("user: ", user);
     let appointments = [];
     if(user?.appointments !== undefined) appointments = user?.appointments;
 

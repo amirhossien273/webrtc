@@ -9,11 +9,8 @@ export const AuthContextProvider = ({children}) => {
     const [user, setUser] = useState(null);
 
     useEffect(() => {
-       console.log(users);
-       const random = Math.floor(Math.random() * users.length);
-       setUser(users[random]);
-       console.log(user);
-
+        const user = JSON.parse(localStorage.getItem("user"));
+       setUser(user);
     },[]);
  
 
